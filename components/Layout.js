@@ -63,7 +63,7 @@ export default function Layout({children, title = "crcup"}) {
                 {children}
             </main>
             <footer className="w-full h-6 flex m-2 justify-center items-center text-gray-500 text-sm">
-                <a href="https://github.com/Ryuyxx/crcup" target="_blank">
+                <a href="https://github.com/Ryuyxx/crcup0314" target="_blank">
                     <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="512px"
                          height="512px">
                         <linearGradient id="KpzH_ttTMIjq8dhx1zD2pa" x1="30.999" x2="30.999" y1="16" y2="55.342"
