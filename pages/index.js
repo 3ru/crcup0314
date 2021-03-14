@@ -30,15 +30,6 @@ export default function Home({data}) {
                     </div>
                 </div>
             </div>
-
-
-            <div className="text-center text-gray-600">
-                <a href="/list" className="hover:bg-gray-300 duration-300">一覧タブ</a>にて参加者の配信を見ることが出来ます。配信している場合、サムネイル画像が表示されます。
-                <br/>
-                サムネイル画像が表示されていても、実際に配信していない場合があります(配信予約の場合)。
-                <br/>
-                使い勝手が悪い点はご了承ください_(._.)_
-            </div>
         </Layout>
     );
 }
