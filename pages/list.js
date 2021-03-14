@@ -1,4 +1,3 @@
-
 import Layout from "../components/Layout";
 import Vid from "../components/Vid";
 
@@ -9,7 +8,7 @@ export default function List() {
     return (
         <Layout title="配信一覧">
             <section className="flex flex-row flex-wrap mx-auto">
-                {ytlist.map((id,index) => <Vid id={id} name={namelist[index]}/>)}
+                {ytlist.map((id, index) => <Vid id={id} name={namelist[index]}/>)}
             </section>
         </Layout>
     )
