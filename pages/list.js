@@ -1,5 +1,4 @@
-import Layout from "../components/Layout";
-import Vid from "../components/Vid";
+import Layout from "../components/Layout.jsx";
 import React, {useState, useEffect} from 'react'
 
 export default function List() {
@@ -17,7 +16,7 @@ export default function List() {
 
     return (
         <Layout title="配信一覧">
-            <section className="flex flex-row flex-wrap mx-auto">
+            <section className="flex flex-row flex-wrap mx-auto pt-4">
                 {ytlist.map((id, index) => <Player id={id} name={namelist[index]}/>)}
             </section>
         </Layout>
@@ -34,21 +33,18 @@ function Player({id, name}) {
             <a
                 href={`https://www.youtube.com/channel/${id}`}
                 target="_blank"
-                className="flex flex-col items-stretch min-h-full transition-all duration-150 shadow-lg hover:shadow-2xl text-white hover:text-blue-300 text-center bg-gradient-to-bl from-gray-700 via-gray-900 to-black"
+                className="flex flex-col items-stretch min-h-full transition-all duration-150 shadow-lg hover:shadow-2xl text-white hover:text-blue-300 text-center bg-gradient-to-bl from-gray-700 via-gray-900 to-black font-bold hover:underline  cursor-pointer"
             >
                 {/*<span className={state === "playing" && "opacity-0"} > 配信していません。</span>*/}
                 <iframe
                     id={id}
-                    className={state === "playing" ? "" : "opacity-0"}
+                    className={state === "playing" || state === "paused" ? "" : "opacity-0"}
                     frameBorder={0}
                     width="560"
                     height="315"
                     src={`https://www.youtube.com/embed/live_stream?channel=${id}&enablejsapi=1&mute=1`}
                 />
                 {name}
-                {/*<p className={["state", state, error && "error"].join(" ")}>*/}
-                {/*    {error ? "error" : state}*/}
-                {/*</p>*/}
             </a>
         </div>
     );
