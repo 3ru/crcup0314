@@ -48,12 +48,12 @@ export default function Layout({children, title = "crcup"}) {
                                               -translate-y-full md:translate-y-0
                                               md:mt-1 md:items-center md:mx-1 md:uppercase">
                         <a href="/list"
-                           className="mx-0 sm:mx-2 my-2 border-b-2 border-transparent hover:border-pink-600 hover:text-pink-700 transition-all duration-500 py-1 sm:p-0">一覧</a>
+                           className="mx-0 sm:mx-2 my-2 border-b-2 border-transparent hover:border-pink-600 hover:text-pink-700 transition-all duration-500 py-1 sm:p-0 font-sans">一覧</a>
                         <a href="https://www.mildom.com/10115448" target="_blank"
-                           className="mx-0 sm:mx-2 my-2 border-b-2 border-transparent hover:border-pink-600 hover:text-pink-700 transition-all duration-500 py-1 sm:p-0">本配信
+                           className="mx-0 sm:mx-2 my-2 border-b-2 border-transparent hover:border-pink-600 hover:text-pink-700 transition-all duration-500 py-1 sm:p-0 font-sans">本配信
                         </a>
                         <a href="https://www.mildom.com/crcup0314/" target="_blank"
-                           className="mx-0 sm:mx-2 my-2 border-b-2 border-transparent hover:border-pink-600 hover:text-pink-700 transition-all duration-500 py-1 sm:p-0">CRカップとは
+                           className="mx-0 sm:mx-2 my-2 border-b-2 border-transparent hover:border-pink-600 hover:text-pink-700 transition-all duration-500 py-1 sm:p-0 font-sans">CRカップとは
                         </a>
                     </div>
 

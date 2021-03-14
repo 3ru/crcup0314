@@ -33,9 +33,8 @@ function Player({id, name}) {
             <a
                 href={`https://www.youtube.com/channel/${id}`}
                 target="_blank"
-                className="flex flex-col items-stretch min-h-full transition-all duration-150 shadow-lg hover:shadow-2xl text-white hover:text-blue-300 text-center bg-gradient-to-bl from-gray-700 via-gray-900 to-black font-bold hover:underline  cursor-pointer"
+                className={["flex flex-col items-stretch min-h-full transition-all duration-150 hover:text-blue-300 text-center font-bold hover:underline cursor-pointer", state === "playing" ? "text-white hover:shadow-2xl shadow-lg bg-gradient-to-bl from-gray-700 via-gray-900 to-black" : "text-grey-100 opacity-20 hover:opacity-100"].join(" ")}
             >
-                {/*<span className={state === "playing" && "opacity-0"} > 配信していません。</span>*/}
                 <iframe
                     id={id}
                     className={state === "playing" || state === "paused" ? "" : "opacity-0"}
