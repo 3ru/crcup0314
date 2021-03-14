@@ -39,7 +39,7 @@ function Player({id, name}) {
                 {/*<span className={state === "playing" && "opacity-0"} > 配信していません。</span>*/}
                 <iframe
                     id={id}
-                    className={state === "playing" ? "z-50" : "opacity-0"}
+                    className={state === "playing" ? "" : "opacity-0"}
                     frameBorder={0}
                     width="560"
                     height="315"
