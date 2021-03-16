@@ -16,6 +16,12 @@ export default function List() {
 
     return (
         <Layout title="配信一覧">
+            <div className="font-thin text-1xl pt-24 text-center">
+                ※初回ロードには時間がかかります<br/>
+                配信している大会参加者がいる場合、自動でYouTube Liveが再生されます<br/>
+                初期設定で全ての動画の音声を切っています。お好みの配信は手動で音量を調節してください。<br/>
+                名前をクリックするとその人のYouTubeページへ飛ぶことが出来ます。
+            </div>
             <section className="flex flex-row flex-wrap mx-auto pt-4">
                 {ytlist.map((id, index) => <Player id={id} name={namelist[index]}/>)}
             </section>
