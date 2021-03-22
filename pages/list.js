@@ -13,16 +13,27 @@ export default function List() {
 
     const ytlist = process.env.NEXT_PUBLIC_YT_LIST.split(',');
     const namelist = process.env.NEXT_PUBLIC_PLAYER_NAME.split(',');
+    const [load, setLoad] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLoad(false)
+        }, 10000);
+        return () => clearTimeout(timer);
+    }, []);
+
+    console.log()
 
     return (
         <Layout title="配信一覧">
-            <div className="font-thin text-1xl pt-24 text-center">
-                ※初回ロードには時間がかかります<br/>
-                配信している大会参加者がいる場合、自動でYouTube Liveが再生されます<br/>
-                初期設定で全ての動画の音声を切っています。お好みの配信は手動で音量を調節してください。<br/>
-                名前をクリックするとその人のYouTubeページへ飛ぶことが出来ます。
-            </div>
-            <section className="flex flex-row flex-wrap mx-auto pt-4">
+            {load ? <div className="font-bold text-1xl pt-24 text-center  ">
+                <span className="animate-pulse">※初回ロードには時間がかかります</span><br/>
+                配信している場合、自動でYouTube Liveが再生されます。<br/>
+                初期設定で動画の音声を切っています。手動で変更してください。<br/>
+                名前をクリックでその人のYouTubeへ飛ぶことが出来ます。
+            </div> : <p className="mt-20 text-2xl font-extrabold">配信者LIVE一覧</p>}
+            {/*<section className="flex flex-row flex-wrap mx-auto pt-4">*/}
+            <section className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 pt-4">
                 {ytlist.map((id, index) => <Player id={id} name={namelist[index]}/>)}
             </section>
         </Layout>
@@ -34,19 +45,20 @@ function Player({id, name}) {
     const {state, error} = usePlayer(id);
 
     return (
-        <div className="transition-all duration-150 flex w-full px-4 py-6 lg:w-1/2 xl:w-1/3 rounded">
-
+        // <div className="transition-all duration-150 flex w-full px-4 py-6 lg:w-1/2 xl:w-1/3">
+        <div
+            className="p-2 w-90 h-52 sm:w-[600px] md:w-[400px] lg:w-[400px] xl:w-[560px] sm:h-[370px] md:h-[256px] lg:h-[256px] xl:h-[345px]">
             <a
                 href={`https://www.youtube.com/channel/${id}`}
                 target="_blank"
-                className={["flex flex-col items-stretch min-h-full transition-all duration-150 hover:text-blue-300 text-center font-bold hover:underline cursor-pointer", state === "playing" ? "text-white hover:shadow-2xl shadow-lg bg-gradient-to-bl from-gray-700 via-gray-900 to-black" : "text-grey-100 opacity-20 hover:opacity-100"].join(" ")}
+                className={["w-full h-full flex flex-col transition duration-150 hover:text-blue-300 text-center font-bold", state === "playing" ? "text-white hover:shadow-2xl shadow-lg bg-gradient-to-bl from-gray-700 via-gray-900 to-black" : "text-grey-100 opacity-80 hover:opacity-100"].join(" ")}
             >
                 <iframe
                     id={id}
-                    className={state === "playing" || state === "paused" ? "" : "opacity-0"}
+                    className={state === "playing" || state === "paused" ? "w-full h-full" : "opacity-0"}
                     frameBorder={0}
-                    width="560"
-                    height="315"
+                    // width="560"
+                    // height="315"
                     src={`https://www.youtube.com/embed/live_stream?channel=${id}&enablejsapi=1&mute=1`}
                 />
                 {name}
