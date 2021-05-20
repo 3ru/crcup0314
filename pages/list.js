@@ -57,6 +57,7 @@ function Player({id, name}) {
                     id={id}
                     className={state === "playing" || state === "paused" ? "w-full h-full" : "opacity-0"}
                     frameBorder={0}
+                    loading="lazy"
                     // width="560"
                     // height="315"
                     src={`https://www.youtube.com/embed/live_stream?channel=${id}&enablejsapi=1&mute=1`}
