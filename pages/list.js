@@ -45,7 +45,6 @@ function Player({id, name}) {
     const {state, error} = usePlayer(id);
 
     return (
-        // <div className="transition-all duration-150 flex w-full px-4 py-6 lg:w-1/2 xl:w-1/3">
         <div
             className="p-2 w-90 h-52 sm:w-[600px] md:w-[400px] lg:w-[400px] xl:w-[560px] sm:h-[370px] md:h-[256px] lg:h-[256px] xl:h-[345px]">
             <a
@@ -58,8 +57,6 @@ function Player({id, name}) {
                     className={state === "playing" || state === "paused" ? "w-full h-full" : "opacity-0"}
                     frameBorder={0}
                     loading="lazy"
-                    // width="560"
-                    // height="315"
                     src={`https://www.youtube.com/embed/live_stream?channel=${id}&enablejsapi=1&mute=1`}
                 />
                 {name}
@@ -71,7 +68,6 @@ function Player({id, name}) {
 
 function usePlayer(id) {
     const [state, setState] = useState("loading");
-    // `unstarted` will overwrite the error state, so separate them
     const [error, setError] = useState(false);
 
     useEffect(() => {
