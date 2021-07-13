@@ -18,11 +18,10 @@ export default function List() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setLoad(false)
-        }, 10000);
+        }, 30000);
         return () => clearTimeout(timer);
     }, []);
 
-    console.log()
 
     return (
         <Layout title="配信一覧">
@@ -43,27 +42,31 @@ export default function List() {
 
 function Player({id, name}) {
     const {state, error} = usePlayer(id);
+    console.log(name, state, error)
 
-    return (
-        <div
-            className="p-2 w-90 h-52 sm:w-[600px] md:w-[400px] lg:w-[400px] xl:w-[560px] sm:h-[370px] md:h-[256px] lg:h-[256px] xl:h-[345px]">
-            <a
-                href={`https://www.youtube.com/channel/${id}`}
-                target="_blank"
-                className={["w-full h-full flex flex-col transition duration-150 hover:text-blue-300 text-center font-bold", state === "playing" ? "text-white hover:shadow-2xl shadow-lg bg-gradient-to-bl from-gray-700 via-gray-900 to-black" : "text-grey-100 opacity-80 hover:opacity-100"].join(" ")}
-            >
-                <iframe
-                    id={id}
-                    className={state === "playing" || state === "paused" ? "w-full h-full" : "opacity-0"}
-                    frameBorder={0}
-                    loading="lazy"
-                    src={`https://www.youtube.com/embed/live_stream?channel=${id}&enablejsapi=1&mute=1`}
-                />
-                {name}
-            </a>
-        </div>
-    );
-
+    if (!error) {
+        return (
+            <div
+                className="p-2 w-90 h-52 sm:w-[600px] md:w-[400px] lg:w-[400px] xl:w-[560px] sm:h-[370px] md:h-[256px] lg:h-[256px] xl:h-[345px]">
+                <a
+                    href={`https://www.youtube.com/channel/${id}`}
+                    target="_blank"
+                    className={["w-full h-full flex flex-col transition duration-150 hover:text-blue-300 text-center font-bold", state === "playing" ? "text-white hover:shadow-2xl shadow-lg bg-gradient-to-bl from-gray-700 via-gray-900 to-black" : "text-grey-100 opacity-80 hover:opacity-100"].join(" ")}
+                >
+                    <iframe
+                        id={id}
+                        className={state === "playing" || state === "paused" ? "w-full h-full" : "hidden"}
+                        frameBorder={0}
+                        loading="lazy"
+                        src={`https://www.youtube.com/embed/live_stream?channel=${id}&enablejsapi=1&mute=1`}
+                    />
+                    {state === "playing" || state === "paused" && name}
+                </a>
+            </div>
+        )
+    }else {
+        return <></>
+    }
 }
 
 function usePlayer(id) {

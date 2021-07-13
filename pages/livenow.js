@@ -17,8 +17,6 @@ export default function LiveNow() {
     const namelist = process.env.NEXT_PUBLIC_PLAYER_NAME.split(',');
 
 
-
-
     return (
         <Layout>
             <section className="flex flex-row flex-wrap mx-auto">
